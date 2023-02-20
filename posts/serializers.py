@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 from .models import Post, Comment, Vote
 
 
@@ -19,11 +20,17 @@ class VoteSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    author = serializers.ReadOnlyField(source='author.username')
     comments = CommentSerializer(many=True, read_only=True)
     votes = VoteSerializer(many=True, read_only=True)
 
+
     class Meta:
         model = Post
-        fields = ('id', 'author', 'title', 'body', 'created_at', 'updated_at', 'comments', 'votes')
+        fields = ('id', 'author', 'title', 'body', 'created_at', 'updated_at', 'comments', 'votes' )
+        
+        
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ('id' , 'username')
 

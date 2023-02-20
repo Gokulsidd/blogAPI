@@ -7,8 +7,8 @@ class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    comments = models.ManyToManyField('Comment', related_name='post_comments', blank=True)
-    votes = models.ManyToManyField('Vote', related_name='post_votes', blank=True)
+    comments = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='post_comments', blank=True)
+    votes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='post_votes', blank=True)
 
     def __str__(self):
         return self.title
