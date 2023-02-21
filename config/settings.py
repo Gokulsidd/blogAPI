@@ -40,18 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'rest_framework',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'corsheaders',
     'rest_framework.authtoken',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'dj_rest_auth',
-    'dj_rest_auth.registration',
-    'drf_spectacular',
+
 
 
     'accounts',
     'posts',
+    'pages'
 ]
 
 REST_FRAMEWORK = {
@@ -96,7 +94,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [str(BASE_DIR.joinpath('templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -109,6 +107,10 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" 
 
@@ -159,6 +161,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+#crispy template pack
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Static files (CSS, JavaScript, Images)

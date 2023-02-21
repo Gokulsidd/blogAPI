@@ -9,6 +9,8 @@ djangorestframework = "*"
 django-cors-headers = "*"
 dj-rest-auth = "*"
 django-allauth = "*"
+django-crispy-forms = "*"
+django-bootstrap4 = "*"
 
 [dev-packages]
 
